@@ -1,28 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import firebase from "firebase/app";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import firebase from "firebase/app";
 import Home from "./Views/Home";
 import Signup from "./components/Signup";
+// import Menu from "./Views/Menu";
+import Login from "./components/Login";
+
 
 const App = () => {
-  const [user, setUser] = useState({});
+  
 
-  // const authListener = () => {
-  //   firebase.auth().onAuthStateChanged(user => {
-  //     console.log(user);
-  //     if (user) {
-  //       setUser({ user });
-  //     } else {
-  //       setUser({ user: null });
-  //     }
-  //   });
-  // };
 
-  // useEffect(() => {
-  //   authListener();
-  // }, []);
-
-return <div className="App"><Signup /></div>;
+  return (
+    <Router>
+      <Switch>
+          <Route exact path="/" component={Home}>
+            <Home />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
+          <Route exact path="/Signup">
+            <Signup />
+          </Route>
+        </Switch>
+    </Router>
+  );
 };
 
 export default App;
